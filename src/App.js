@@ -6,35 +6,47 @@ function App() {
   const [headline1, setHeadline1] = useState([]);
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
+  const [line3, setLine3] = useState("");
 
   const today = new Date();
   const dateFormat = (date) => {
     return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
   };
 
-  const handleSubmit = async (term) => {
+  const handleSubmit = async () => {
     const result = await searchContent("", dateFormat(today));
+    console.log(result);
     const ranNum = Math.floor(Math.random() * 10);
-    setHeadline1(result[ranNum].webTitle);
-    console.log(result, ranNum);
+    const ranNum2 = Math.floor(Math.random() * 10);
+    handleLine1(result[ranNum].webTitle);
+    handleLine2(result[ranNum2].webTitle);
   };
-  const handleShorten = () => {
-    headline1.includes(":")
-      ? //const colon = headline1.indexOf(":");
-        setLine1(headline1.slice(0, headline1.indexOf(":")))
-      : headline1.includes(",")
-      ? setLine1(headline1.slice(0, headline1.indexOf(",")))
-      : setLine1(headline1);
+  const handleLine1 = (headline) => {
+    headline.includes(" – ")
+      ? setLine1(headline.slice(0, headline.indexOf(" – ")))
+      : headline.includes(":")
+      ? setLine1(headline.slice(0, headline.indexOf(":")))
+      : headline.includes(",")
+      ? setLine1(headline.slice(0, headline.indexOf(",")))
+      : setLine1(headline.slice(0, headline.indexOf(" ")));
+  };
+  const handleLine2 = (headline) => {
+    const headlineArr = headline.split(" ");
+    const lastFour = headlineArr.slice(
+      headlineArr.length - 4,
+      headlineArr.length
+    );
+    const str = lastFour.join(" ");
+    setLine2(str.charAt(0).toUpperCase() + str.slice(1));
   };
 
   return (
     <>
       <button onClick={handleSubmit}>Button</button>
-      <div>{headline1}</div>
-      <button onClick={handleShorten}>Shortened</button>
-      <div>Line 1: {line1},</div>
-      <div>Line 2: {line2}</div>
-      <div>{dateFormat(today)}</div>
+      <div>Today's date: {dateFormat(today)}</div>
+      <div>{line1},</div>
+      <div>{line2},</div>
+      <div>{line3}</div>
     </>
   );
 }
