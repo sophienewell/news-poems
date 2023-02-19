@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import searchContent from "./api";
 
@@ -27,6 +27,10 @@ function App() {
     const newLine = line.replace(" |", ",");
     return newLine;
   };
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
 
   const handleSubmit = async () => {
     const result = await searchContent("", dateFormat(today));
@@ -79,11 +83,16 @@ function App() {
 
   return (
     <>
-      <button onClick={handleSubmit}>Button</button>
-      <div>Today's date: {dateFormat(today)}</div>
-      <div>{line1},</div>
-      <div>{line2},</div>
-      <div>{line3}</div>
+      <div className="center flex-container">
+        <div className="flex-container-col">
+          <div>Today is {dateFormat(today)}</div>
+          <div className="flex-container-col margin-3 font-l">
+            <div className="padding-1">{line1},</div>
+            <div className="padding-1">{line2},</div>
+            <div className="padding-1">{line3}</div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
