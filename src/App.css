@@ -1,5 +1,6 @@
 body {
   background-color: lightgray;
+  font-family: "Zilla Slab", serif;
 }
 
 .flex-container-col {
@@ -22,3 +23,29 @@ body {
 .font-l {
   font-size: 3rem;
 }
+.typing {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  animation: typing 3.5s steps(40, end);
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+/*@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}*/

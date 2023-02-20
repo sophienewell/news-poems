@@ -47,7 +47,7 @@ function App() {
 
   const checkForTooManyWords = (line) => {
     const headlineArr = line.split(" ");
-    if (headlineArr.length > 10) {
+    if (headlineArr.length > 9) {
       const firstSix = headlineArr.slice(0, 6);
       return firstSix.join(" ");
     } else {
@@ -101,13 +101,13 @@ function App() {
 
   return (
     <>
-      <div className="center flex-container">
+      <div className="flex-container">
         <div className="flex-container-col">
           <div>Today is {dateFormat(today)}</div>
-          <div className="flex-container-col margin-3 font-l">
+          <div className="flex-container-col margin-3 font-l typing">
             <div className="padding-1">{line1},</div>
-            <div className="padding-1">{line2},</div>
-            <div className="padding-1">{line3}.</div>
+            <div className="padding-1 ">{line2},</div>
+            <div className="padding-1 ">{line3}.</div>
           </div>
         </div>
       </div>
