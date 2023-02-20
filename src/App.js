@@ -6,6 +6,10 @@ function App() {
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
   const [line3, setLine3] = useState("");
+  const [url1, setUrl1] = useState("");
+  const [url2, setUrl2] = useState("");
+  const [url3, setUrl3] = useState("");
+  const [linksOpen, setLinksOpen] = useState(false);
 
   const today = new Date();
   const dateFormat = (date) => {
@@ -66,20 +70,23 @@ function App() {
     const result = await searchContent("", dateFormat(today));
     console.log(result);
     let ranNumArr = ranNums();
-    handleLine1(result[ranNumArr[0]].webTitle);
-    handleLine2(result[ranNumArr[1]].webTitle);
-    handleLine3(result[ranNumArr[2]].webTitle);
+    handleLine1(result[ranNumArr[0]]);
+    handleLine2(result[ranNumArr[1]]);
+    handleLine3(result[ranNumArr[2]]);
   };
 
-  const handleLine1 = (headline) => {
+  const handleLine1 = (result) => {
+    setUrl1(result.webUrl);
+    const headline = result.webTitle;
     const shortenedHeadline = upToPunctuation(headline);
     headline === shortenedHeadline
       ? setLine1(headline.slice(0, headline.indexOf(" ")))
       : setLine1(checkForTooManyWords(shortenedHeadline));
   };
 
-  const handleLine2 = (headline) => {
-    const headlineArr = headline.split(" ");
+  const handleLine2 = (result) => {
+    setUrl2(result.webUrl);
+    const headlineArr = result.webTitle.split(" ");
     const lastFour = headlineArr.slice(
       headlineArr.length - 4,
       headlineArr.length
@@ -88,7 +95,9 @@ function App() {
     setLine2(removePipe(str.charAt(0).toUpperCase() + str.slice(1)));
   };
 
-  const handleLine3 = (headline) => {
+  const handleLine3 = (result) => {
+    setUrl3(result.webUrl);
+    const headline = result.webTitle;
     const headlineArr = headline.split(" ");
     const lastPart = headlineArr
       .slice(headlineArr.length - 4, headlineArr.length)
@@ -109,6 +118,33 @@ function App() {
             <div className="padding-1 ">{line2},</div>
             <div className="padding-1 ">{line3}.</div>
           </div>
+          <div
+            className="references"
+            onClick={() => {
+              setLinksOpen(!linksOpen);
+            }}
+          >
+            view references
+          </div>
+          {linksOpen && (
+            <div style={{ margin: "0rem 3rem" }}>
+              <p>
+                <a href={url1} target="_blank" title="Go to article">
+                  {url1}
+                </a>
+              </p>
+              <p>
+                <a href={url2} target="_blank" title="Go to article">
+                  {url2}
+                </a>
+              </p>
+              <p>
+                <a href={url3} target="_blank" title="Go to article">
+                  {url3}
+                </a>
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </>

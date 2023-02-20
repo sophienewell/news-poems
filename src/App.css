@@ -2,6 +2,13 @@ body {
   background-color: lightgray;
   font-family: "Zilla Slab", serif;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+}
 
 .flex-container-col {
   display: flex;
@@ -28,7 +35,6 @@ body {
   white-space: nowrap; /* Keeps the content on a single line */
   animation: typing 3.5s steps(40, end);
 }
-
 /* The typing effect */
 @keyframes typing {
   from {
@@ -38,14 +44,20 @@ body {
     width: 100%;
   }
 }
-
-/* The typewriter cursor effect */
-/*@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}*/
+.references {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 1rem;
+  margin-left: 1rem;
+  color: gray;
+  overflow: visible;
+  white-space: nowrap;
+  transition: width 1s;
+  box-sizing: border-box;
+  padding: 0.3rem 0.7rem;
+}
+.references:hover {
+  cursor: pointer;
+  background-color: black;
+  width: 8rem;
+}
