@@ -129,17 +129,32 @@ function App() {
           {linksOpen && (
             <div style={{ margin: "0rem 3rem" }}>
               <p>
-                <a href={url1} target="_blank" title="Go to article">
+                <a
+                  href={url1}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Go to article"
+                >
                   {url1}
                 </a>
               </p>
               <p>
-                <a href={url2} target="_blank" title="Go to article">
+                <a
+                  href={url2}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Go to article"
+                >
                   {url2}
                 </a>
               </p>
               <p>
-                <a href={url3} target="_blank" title="Go to article">
+                <a
+                  href={url3}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Go to article"
+                >
                   {url3}
                 </a>
               </p>

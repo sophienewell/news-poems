@@ -37,7 +37,7 @@ a:hover {
 }
 .typing {
   overflow: hidden;
-  /* white-space: nowrap;  */
+  white-space: nowrap;
   animation: typing 3.5s steps(40, end);
 }
 /* The typing effect */
