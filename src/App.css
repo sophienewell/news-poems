@@ -21,18 +21,23 @@ a:hover {
 .center {
   justify-content: center;
 }
-.margin-3 {
-  margin: 3rem;
+.margin-5pc {
+  margin: 5%;
 }
-.padding-1 {
-  padding: 0.5rem;
+.padding-v {
+  padding-bottom: 1rem;
 }
 .font-l {
-  font-size: 3rem;
+  font-size: 5vw;
+}
+@media screen and (min-width: 1200px) {
+  .font-l {
+    font-size: 2.5rem;
+  }
 }
 .typing {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  white-space: nowrap; /* Keeps the content on a single line */
+  overflow: hidden;
+  /* white-space: nowrap;  */
   animation: typing 3.5s steps(40, end);
 }
 /* The typing effect */
@@ -48,7 +53,6 @@ a:hover {
   height: 2rem;
   width: 2rem;
   border-radius: 1rem;
-  margin-left: 1rem;
   color: gray;
   overflow: visible;
   white-space: nowrap;

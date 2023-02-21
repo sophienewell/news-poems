@@ -110,14 +110,14 @@ function App() {
 
   return (
     <>
-      <div className="flex-container">
-        <div className="flex-container-col">
-          <div>Today is {dateFormat(today)}</div>
-          <div className="flex-container-col margin-3 font-l typing">
-            <div className="padding-1">{line1},</div>
-            <div className="padding-1 ">{line2},</div>
-            <div className="padding-1 ">{line3}.</div>
-          </div>
+      <div className="flex-container-col">
+        <div style={{ margin: "1rem" }}>Today is {dateFormat(today)}</div>
+        <div className="flex-container-col margin-5pc font-l typing">
+          <div className="padding-v">{line1},</div>
+          <div className="padding-v ">{line2},</div>
+          <div className="padding-v ">{line3}.</div>
+        </div>
+        <div className="margin-5pc" style={{ marginTop: 0 }}>
           <div
             className="references"
             onClick={() => {
